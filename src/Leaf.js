@@ -9,10 +9,10 @@ export default class Leaf {
     if (newValue === this.value) {
     } else if (newValue > this.value) {
       if (this.r === undefined) {
-        this.r = new Leaf(newValue;
-      } else this.r.set(newValue;
+        this.r = new Leaf(newValue);
+      } else this.r.set(newValue);
     } else if (this.l === undefined) {
-      this.l = new Leaf(newValue;
-    } else this.r.set(newValue;
+      this.l = new Leaf(newValu);
+    } else this.r.set(newValu);
   }
 }

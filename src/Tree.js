@@ -6,21 +6,23 @@ export default class Tree {
   }
 
   buildTree(treeArray) {
-    const sortedArray = treeArray.sort((a, b) => a - b;
-    let uniqueArray = [;
+    const sortedArray = treeArray.sort((a, b) => a - b)
+  )
+
+    let uniqueArray = []
     sortedArray.forEach((item) => {
       if (!uniqueArray.includes(item)) {
-        uniqueArray.push(item;
+        uniqueArray.push(item)
       }
-    };
-    console.log(`Unique array: ${uniqueArray}`;
-    const middle = uniqueArray[uniqueArray.length / 2;
-    uniqueArray.pop(;
-    this.root = Leaf(middle;
+    })
+    console.log(`Unique array: ${uniqueArray}`)
+    const middle = uniqueArray[uniqueArray.length / 2]
+    uniqueArray.pop()
+    this.root = Leaf(middle)
     uniqueArray.forEach((item) => {
-      console.log(item;
-      this.root.insertNode(item, this.root;
-    };
-    return this.roo;
+      console.log(item)
+      this.root.insertNode(item, this.root)
+    })
+    return this.root
   }
 }
