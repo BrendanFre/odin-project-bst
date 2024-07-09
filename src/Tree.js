@@ -6,9 +6,9 @@ export default class Tree {
   }
 
   buildTree(treeArray) {
-    const sortedArray = treeArray.sort((a, b) => a - b;
+    const sortedArray = treeArray.sort((a, b) => a - b);
 
-    let uniqueArray = []
+    let uniqueArray = [;
     sortedArray.forEach((item) => {
       if (!uniqueArray.includes(item)) {
         uniqueArray.push(item)
