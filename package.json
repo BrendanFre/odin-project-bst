@@ -1,0 +1,17 @@
+{
+  "name": "odin-binary-search-tree-project",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "jasmine"
+  },
+  "keywords": [],
+  "author": "Brendan Freeman",
+  "license": "MIT",
+  "dependencies": {
+    "jasmine": "^5.1.0",
+    "prettier": "^3.3.2"
+  }
+}
