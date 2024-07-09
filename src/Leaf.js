@@ -12,7 +12,7 @@ export default class Leaf {
         this.r = new Leaf(newValue);
       } else this.r.set(newValue);
     } else if (this.l === undefined) {
-      this.l = new Leaf(newValu);
-    } else this.r.set(newValu);
+      this.l = new Leaf(newValue);
+    } else this.r.set(newValue);
   }
 }
