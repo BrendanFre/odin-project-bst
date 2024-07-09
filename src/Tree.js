@@ -17,10 +17,10 @@ export default class Tree {
     console.log(`Unique array: ${uniqueArray}`);
     const middle = uniqueArray[uniqueArray.length / 2];
     uniqueArray.pop();
-    this.root = Leaf(middle);
+    this.root = new Leaf(middle);
     uniqueArray.forEach((item) => {
       console.log(item);
-      this.root.insertNode(item, this.root);
+      this.root.set(item);
     });
     return this.root;
   }
