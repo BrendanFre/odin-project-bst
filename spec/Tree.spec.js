@@ -23,4 +23,9 @@ describe("Tree Removes:", () => {
     testRem.remove(1);
     expect(testRem.l).toBe(undefined);
   });
+  it("Remove the number 1 from root 3 > l 2> l1", () => {
+    const testRem = new Tree([3, 1, 4]);
+    testRem.remove(1);
+    expect(testRem.l).toBe(undefined);
+  });
 });
