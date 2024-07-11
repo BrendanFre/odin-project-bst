@@ -11,3 +11,16 @@ describe("Tree", () => {
     expect(tree.root.l.value).toEqual(2);
   });
 });
+
+describe("Tree Removes:", () => {
+  it("Remove root node", () => {
+    const testTwo = new Tree([4]);
+    testTwo.remove(4);
+    expect(testTwo.root).toBe(undefined);
+  });
+  it("Remove the number 1 child of root", () => {
+    const testRem = new Tree([3, 1]);
+    testRem.remove(1);
+    expect(testRem.l).toBe(undefined);
+  });
+});
