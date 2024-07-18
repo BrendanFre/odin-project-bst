@@ -28,6 +28,13 @@ export default class Tree {
       }
     }
   }
+  insert(newNumber) {
+    if (this.root !== undefined) {
+      if (this.root instanceof Leaf) {
+        this.root.set(newNumber);
+      }
+    }
+  }
 
   buildTree(treeArray) {
     if (treeArray.length === 1) {
@@ -41,8 +48,12 @@ export default class Tree {
           uniqueArray.push(item);
         }
       });
-      const middle = uniqueArray[uniqueArray.length / 2];
-      uniqueArray.pop();
+      const middleIndex = Math.floor(uniqueArray.length / 2) - 1;
+      const middle = uniqueArray[middleIndex];
+      uniqueArray.splice(middleIndex, 1);
+      console.log(
+        `The middle index value of: ${uniqueArray} is ${middleIndex} which is ${middle}`
+      );
       this.root = new Leaf(middle);
       uniqueArray.forEach((item) => {
         this.root.set(item);

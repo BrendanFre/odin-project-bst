@@ -13,7 +13,7 @@ export default class Leaf {
       } else this.r.set(newValue, left, right);
     } else if (this.l === undefined) {
       this.l = new Leaf(newValue, left, right);
-    } else this.r.set(newValue, left, right);
+    } else this.l.set(newValue, left, right);
   }
 
   get(search) {
@@ -25,6 +25,24 @@ export default class Leaf {
       this.r.get(search);
     } else if (this.l !== undefined) {
       this.l.get(search);
+    }
+  }
+
+  remove(target) {
+    if (this.l.value === target) {
+      if (!checkChildren(this.l)) {
+        this.l = undefined;
+      }
+    }
+  }
+
+  checkChildren(leaf) {
+    if (leaf.l === undefined && leaf.r === undefined) {
+      return false;
+    } else if (leaf.l !== undefined && leaf.r === undefined) {
+      leaf.value = leaf.l.value;
+      leaf.r = leaf.l.r;
+      leaf.l = leaf.l.l;
     }
   }
 }
