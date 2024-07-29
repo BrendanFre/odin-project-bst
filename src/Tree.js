@@ -4,28 +4,34 @@ export default class Tree {
   constructor(array) {
     this.root = this.buildTree(array);
   }
-  remove(target, currentNode = this) {
-    if (currentNode instanceof Tree) {
-      if (currentNode.root.value === target) {
-        if (
-          currentNode.root.l === undefined &&
-          currentNode.root.r === undefined
-        ) {
-          currentNode.root = undefined;
-        } else if (
-          currentNode.root.l !== undefined &&
-          currentNode.root.r === undefined
-        ) {
-          currentNode.root = currentNode.root.l;
-        } else if (
-          currentNode.root.r !== undefined &&
-          currentNode.root.l === undefined
-        ) {
-          currentNode.root = currentNode.root.l;
-        } else {
-          currentNode.root.value = getNext(currentNode.root.r);
-        }
+  find(value, currentNode = this) {
+    if (currentNode.root.value == value) {
+      return currentNode.root;
+    } else {
+      if (currentNode.root.l !== undefined) {
+        return find(value, currentNode.root.l);
       }
+      if (currentNode.root.r !== undefined) {
+        return find(value, currentNode.root.r);
+      }
+    }
+  }
+  remove(target, currentNode = this.root) {
+    if (currentNode.value === target) {
+      if (currentNode.l === undefined && currentNode.r === undefined) {
+        currentNode = undefined;
+      } else if (currentNode.l !== undefined && currentNode.r === undefined) {
+        currentNode.root = currentNode.root.l;
+      } else if (currentNode.r !== undefined && currentNode.l === undefined) {
+        currentNode = currentNode.root.l;
+      } else {
+        currentNode.root.value = getNext(currentNode.root.r);
+      }
+    } else if (currentNode !== undefined) {
+      return;
+    } else {
+      this.remove(target, currentNode.l);
+      this.remove(target, currentNode.r);
     }
   }
   insert(newNumber) {
@@ -48,7 +54,7 @@ export default class Tree {
           uniqueArray.push(item);
         }
       });
-      const middleIndex = Math.floor(uniqueArray.length / 2) - 1;
+      const middleIndex = Math.floor(uniqueArray.length / 2);
       const middle = uniqueArray[middleIndex];
       uniqueArray.splice(middleIndex, 1);
       // console.log(
