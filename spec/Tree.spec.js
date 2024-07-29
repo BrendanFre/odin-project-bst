@@ -37,7 +37,7 @@ describe("Tree Removes:", () => {
     const testChild = new Tree([2, 1]);
     expect(testChild.root.value).toBe(1);
     testChild.remove(2);
-    console.log(testChild);
-    expect(testChild.root.r).toBe(undefined);
+    // console.log(testChild);
+    expect(testChild.root.l).toBe(undefined);
   });
 });

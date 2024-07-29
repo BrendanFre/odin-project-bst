@@ -51,9 +51,9 @@ export default class Tree {
       const middleIndex = Math.floor(uniqueArray.length / 2) - 1;
       const middle = uniqueArray[middleIndex];
       uniqueArray.splice(middleIndex, 1);
-      console.log(
-        `The middle index value of: ${uniqueArray} is ${middleIndex} which is ${middle}`
-      );
+      // console.log(
+      //   `The middle index value of: ${uniqueArray} is ${middleIndex} which is ${middle}`
+      // );
       this.root = new Leaf(middle);
       uniqueArray.forEach((item) => {
         this.root.set(item);
