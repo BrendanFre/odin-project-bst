@@ -30,7 +30,6 @@ export default class Tree {
       }
     }
   }
-
   buildTree(treeArray) {
     if (treeArray.length === 1) {
       return (this.root = new Leaf(treeArray[0]));
@@ -55,6 +54,34 @@ export default class Tree {
       });
       return this.root;
     }
+  }
+  levelOrder(callback, currentNode = this.root) {
+    const checkFunction = callback instanceof Function;
+
+    if (!checkFunction) {
+      throw new Error("Callback function not provided.");
+    } else if (currentNode.value === undefined) {
+      throw new Error("Tree does not contain any nodes.");
+    }
+
+    const queue = [];
+    const result = [];
+
+    queue.push(currentNode.value);
+    if (currentNode.l === undefined && currentNode.r === undefined) {
+      return queue;
+    }
+    if (currentNode.l !== undefined) {
+      queue.push(levelOrder(callback, currentNode.l));
+    }
+    if (currentNode.r !== undefined) {
+      queue.push(levelOrder(callback, currentNode.r));
+    }
+    console.log(`the queue is ${queue}`);
+    queue.forEach((item) => {
+      result.push(callback(item));
+    });
+    return result;
   }
 }
 
