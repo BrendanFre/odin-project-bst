@@ -4,41 +4,24 @@ export default class Tree {
   constructor(array) {
     this.root = this.buildTree(array);
   }
-  find(value, currentNode = this) {
-    if (currentNode.root.value == value) {
-      return currentNode.root;
+  find(value, currentNode = this.root) {
+    if (currentNode.value == value) {
+      return currentNode;
     } else {
-      if (currentNode.root.l !== undefined) {
-        return find(value, currentNode.root.l);
+      if (currentNode.l !== undefined) {
+        return currentNode.l.find(value);
       }
-      if (currentNode.root.r !== undefined) {
-        return find(value, currentNode.root.r);
+      if (currentNode.r !== undefined) {
+        return currentNode.r.find(value);
       }
     }
   }
-  remove(target, currentNode = this.root) {
+  deleteItem(item, currentNode = this.root) {
     if (currentNode === undefined) {
       return false;
     } else {
-      currentNode.remove(target, this);
+      return currentNode.remove(item, this);
     }
-
-    // if (currentNode.value === target) {
-    //   if (currentNode.l === undefined && currentNode.r === undefined) {
-    //     currentNode.root = undefined;
-    //   } else if (currentNode.l !== undefined && currentNode.r === undefined) {
-    //     currentNode.root = currentNode.root.l;
-    //   } else if (currentNode.r !== undefined && currentNode.l === undefined) {
-    //     currentNode = currentNode.root.l;
-    //   } else {
-    //     currentNode.root.value = getNext(currentNode.root.r);
-    //   }
-    // } else if (currentNode !== undefined) {
-    //   return;
-    // } else {
-    //   currentNode.l.remove(target);
-    //   currentNode.r.remove(target);
-    // }
   }
   insert(newNumber) {
     if (this.root !== undefined) {

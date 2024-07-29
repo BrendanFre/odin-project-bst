@@ -70,4 +70,17 @@ export default class Leaf {
       leaf.l = leaf.l.l;
     }
   }
+
+  find(target) {
+    if (this.value === target) {
+      return this;
+    } else {
+      if (this.l !== undefined) {
+        return this.l.find(target);
+      }
+      if (this.r !== undefined) {
+        return this.r.find(target);
+      }
+    }
+  }
 }
