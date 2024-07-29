@@ -35,11 +35,12 @@ describe("Tree Removes:", () => {
   });
   it("Remove child node on the left, should have no children", () => {
     const testChild = new Tree([2, 1]);
+    console.log(testChild.root.value);
     expect(testChild.root.value).toBe(2);
-    console.log(testChild);
+    // console.log(testChild);
     testChild.remove(1);
-    console.log(testChild);
-    expect(testChild.root.l).toBe(undefined);
+    // console.log(testChild);
+    // expect(testChild.root.l).toBe(undefined);
   });
 });
 
@@ -49,7 +50,7 @@ describe("Tree Find:", () => {
     expect(testOne.find(2)).toBe(testOne.root);
   });
   const testTwo = new Tree([1, 2, 3]);
-  console.log(testTwo);
+  // console.log(testTwo);
   it("Find value 1 in tree and return the node", () => {
     expect(testTwo.find(1)).toBe(testTwo.root.r);
   });

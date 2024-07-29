@@ -17,22 +17,28 @@ export default class Tree {
     }
   }
   remove(target, currentNode = this.root) {
-    if (currentNode.value === target) {
-      if (currentNode.l === undefined && currentNode.r === undefined) {
-        currentNode = undefined;
-      } else if (currentNode.l !== undefined && currentNode.r === undefined) {
-        currentNode.root = currentNode.root.l;
-      } else if (currentNode.r !== undefined && currentNode.l === undefined) {
-        currentNode = currentNode.root.l;
-      } else {
-        currentNode.root.value = getNext(currentNode.root.r);
-      }
-    } else if (currentNode !== undefined) {
-      return;
+    if (currentNode === undefined) {
+      return false;
     } else {
-      this.remove(target, currentNode.l);
-      this.remove(target, currentNode.r);
+      currentNode.remove(target, this);
     }
+
+    // if (currentNode.value === target) {
+    //   if (currentNode.l === undefined && currentNode.r === undefined) {
+    //     currentNode.root = undefined;
+    //   } else if (currentNode.l !== undefined && currentNode.r === undefined) {
+    //     currentNode.root = currentNode.root.l;
+    //   } else if (currentNode.r !== undefined && currentNode.l === undefined) {
+    //     currentNode = currentNode.root.l;
+    //   } else {
+    //     currentNode.root.value = getNext(currentNode.root.r);
+    //   }
+    // } else if (currentNode !== undefined) {
+    //   return;
+    // } else {
+    //   currentNode.l.remove(target);
+    //   currentNode.r.remove(target);
+    // }
   }
   insert(newNumber) {
     if (this.root !== undefined) {

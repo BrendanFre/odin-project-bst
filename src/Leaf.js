@@ -28,10 +28,35 @@ export default class Leaf {
     }
   }
 
-  remove(target) {
-    if (this.l.value === target) {
-      if (!checkChildren(this.l)) {
-        this.l = undefined;
+  remove(target, parent) {
+    if (this.value === target) {
+      if (this.l === undefined && this.r === undefined) {
+        return (parent.root = undefined);
+      } else if (this.l !== undefined) {
+        if (this.r === undefined) {
+          const newValue = this.l;
+          this.value = newValue.value;
+          this.l = newValue.l;
+          this.r = newValue.r;
+        } else {
+          const x = this.r;
+          const y = this.l;
+          this.value = x.value;
+          this.r.l = x.l;
+          this.r.r = x.r;
+        }
+      } else {
+        const newValue = this.r;
+        this.value = newValue.value;
+        this.l = newValue.l;
+        this.r = newValue.r;
+      }
+    } else {
+      if (this.l !== undefined) {
+        this.l.remove(target, this);
+      }
+      if (this.r !== undefined) {
+        this.r.remove(target, this);
       }
     }
   }
