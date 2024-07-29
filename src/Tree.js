@@ -63,25 +63,35 @@ export default class Tree {
     } else if (currentNode.value === undefined) {
       throw new Error("Tree does not contain any nodes.");
     }
+    const queue = [currentNode];
+    const current = currentNode;
 
-    const queue = [];
-    const result = [];
+    while (queue > 0) {
+      const current = queue.shift();
+      callback(current);
 
-    queue.push(currentNode.value);
-    if (currentNode.l === undefined && currentNode.r === undefined) {
-      return queue;
+      if (currentNode.l) queue.push(current.l);
+      if (currentNode.r) queue.push(current.r);
     }
-    if (currentNode.l !== undefined) {
-      queue.push(levelOrder(callback, currentNode.l));
+  }
+  preOrder(callback, currentNode = this.root) {
+    const checkFunction = callback instanceof Function;
+
+    if (!checkFunction) {
+      throw new Error("Callback function not provided.");
+    } else if (currentNode.value === undefined) {
+      throw new Error("Tree does not contain any nodes.");
     }
-    if (currentNode.r !== undefined) {
-      queue.push(levelOrder(callback, currentNode.r));
+    const queue = [currentNode];
+    const current = currentNode;
+
+    while (queue > 0) {
+      const current = queue.shift();
+      callback(current);
+
+      if (currentNode.l) queue.push(current.l);
+      if (currentNode.r) queue.push(current.r);
     }
-    console.log(`the queue is ${queue}`);
-    queue.forEach((item) => {
-      result.push(callback(item));
-    });
-    return result;
   }
 }
 
